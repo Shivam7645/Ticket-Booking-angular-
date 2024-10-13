@@ -1,0 +1,16 @@
+<div>
+  <label for="seatsToBook">Enter the number of seats to book (1-7): </label>
+  <input id="seatsToBook" [(ngModel)]="seatsToBook" type="number" min="1" max="7">
+  <button (click)="bookSeats(seatsToBook)">Book Seats</button>
+</div>
+
+<h3>Booked Seats: {{ bookedSeats.join(', ') }}</h3>
+
+<div class="seat-map">
+  <div *ngFor="let row of seats; let rowIndex = index">
+    <div *ngFor="let seat of row; let seatIndex = index" 
+         [ngClass]="{'booked': !seat, 'available': seat}">
+      {{ seatIndex + 1 }}
+    </div>
+  </div>
+</div>
